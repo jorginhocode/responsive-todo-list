@@ -1,0 +1,142 @@
+* {
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+}
+
+body {
+    background-color: #0a0a0f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+svg {
+    width: 16px;
+    height: 16px
+}
+
+input {
+    background-color: #1c1c2e;
+    color: #fafafc;
+    width: 100%;
+    border: none;
+    border-radius: 8px 0 0 8px;
+    outline: none;
+    padding: 0 20px;
+    font-size: 16px;
+}
+
+span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex: 1;
+    min-width: 0;
+    margin-right: 20px;
+}
+
+.container {
+    width: 500px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #13131e;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #fafafc;
+    margin: 1.25rem;
+    overflow: hidden; /* evita que hijos rompan el container */
+}
+
+.taskAdd {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+}
+
+.taskAdd input::placeholder {
+    color: #565a63;
+}
+
+.add {
+    background-color: #52fe76 !important;
+    color: #171b24;
+    border: none;
+    border-radius: 0 8px 8px 0 !important;
+    cursor: pointer;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.add:hover {
+    background-color: #3dd15e !important;
+}
+
+.taskList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: .5rem;
+}
+
+.taskList button {
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 14px 20px;
+}
+
+.taskList li {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1c1c2e;
+    font-size: 16px;
+    border-radius: 8px;
+    padding: 0 0 0 20px;
+    color: #fafafc;
+}
+
+.taskList > *:first-child {
+    margin-top: 2rem;
+}
+
+.editInputContainer {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #1c1c2e;
+    font-size: 16px;
+    border-radius: 8px;
+    color: #fafafc;
+}
+
+li .editButtonList {
+    background-color: #222232 !important;
+    color: #7c87ee !important;
+}
+
+li .editButtonList:hover {
+    background-color: #2d2d4a !important;
+    color: #a5b0ff !important;
+}
+
+li .deleteButtonList {
+    border-radius: 0 8px 8px 0 !important;
+    color: #d66262 !important;
+    background-color: #2d1a1a !important;
+  }
+
+li .deleteButtonList:hover {
+    background-color: #3d2020 !important;
+    color: #f08080 !important;
+}
+

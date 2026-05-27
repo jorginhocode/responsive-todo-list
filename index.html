@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive To Do List</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <div class="taskAdd">
+      <input type="text" placeholder="Add a task" class="inputAdd">
+      <button class="add"><svg xmlns="http://www.w3.org/2000/svg" width="16" fill="currentColor" viewBox="0 0 24 24"><path d="M13 11h9v2h-9v9h-2v-9H2v-2h9V2h2z"/></svg></button>
+    </div>
+
+    <ul class="taskList">
+
+    </ul>
+</div>
+
+<script>
+
+const input = document.querySelector('input');
+const button = document.querySelector('.add');
+
+button.addEventListener('click', () => {
+  if(input.value === '') {
+    alert('Please enter a task');
+    return;
+  } else {
+      const task = document.createElement('li');   
+      const divContainer = document.createElement('div');
+      var deleteButton = document.createElement('button'); 
+      var editButton = document.createElement('button');  
+
+      task.innerHTML = "<span>" + input.value + "</span>";
+
+      editButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="m16 10-2-2-9 9v2h1zm1-2 2-1-2-2-1 2zM7 21H3v-4L16 3h2l3 3v1z"/></svg>';
+      editButton.classList.add('editButtonList');
+      divContainer.append(editButton);
+      task.append(divContainer);
+      
+      editButton.addEventListener('click', () => {
+        const inputEditar = document.createElement('div');
+        inputEditar.classList.add('editInputContainer');
+        inputEditar.innerHTML = '<input type="text">';
+        inputEditar.querySelector('input').value = task.childNodes[0].textContent;
+        task.replaceWith(inputEditar);
+
+        const botonGuardar = document.createElement('button');
+        botonGuardar.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M18 19h1V7l-2-2h-1v4H7V5H5v14h1v-7h12zM4 3h14l3 3v14l-1 1H4l-1-1V4zm4 11v5h8v-5z"/></svg>';
+        botonGuardar.classList.add('add');
+
+        inputEditar.append(botonGuardar);
+
+        botonGuardar.addEventListener("click", () => {
+          task.childNodes[0].textContent = inputEditar.querySelector('input').value;
+          inputEditar.replaceWith(task);
+        });
+      });
+
+      deleteButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M7 4V2h10v2h5v2h-2v15l-1 1H5l-1-1V6H2V4zM6 6v14h12V6zm3 3h2v8H9zm4 0h2v8h-2z"/></svg>';
+      deleteButton.classList.add('deleteButtonList');
+      divContainer.append(deleteButton);
+      task.append(divContainer);
+
+      deleteButton.addEventListener('click', () => {
+        task.remove();
+      });
+
+    const taskList = document.querySelector('.taskList');
+    taskList.append(task);
+    input.value = '';
+  }
+});
+</script>
+</body>
+</html>
